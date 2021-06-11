@@ -1,0 +1,3 @@
+Для того, чтобы стартовать плейбук, выполни, пожалуйста
+
+ansible-playbook -vv -i hosts mydocker.yaml
