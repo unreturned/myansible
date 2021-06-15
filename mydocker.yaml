@@ -2,7 +2,13 @@
 - hosts: [docker_servers]
   remote_user: dkovalkov
   tasks:
-    - name: Ensure we are alive
-      service: name=docker state=started
+
+    - name: Ensure docker are installed
+      package: name=docker state=present
+      become: yes
+      become_method: sudo
+
+    - name: Ensure docker are alive
+      service: name=docker state=started runlevel=boot
       become: yes
       become_method: sudo
