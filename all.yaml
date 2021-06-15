@@ -9,3 +9,14 @@
       copy:
         src: files/etc/apk/repositories
         dest: /etc/apk/repositories
+
+    - name: Ensure basic packages are installed
+      become: yes
+      become_method: sudo
+      package:
+        name={{ item }}
+        state=present
+      loop:
+        - vim
+        - mtr
+        - netcat-openbsd
