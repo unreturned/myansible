@@ -1,5 +1,5 @@
 ---
-- hosts: [basic]
+- hosts: [all]
   remote_user: dkovalkov
   tasks:
 
