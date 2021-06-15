@@ -17,8 +17,26 @@
         name={{ item }}
         state=present
       loop:
+        - htop
         - mtr
         - nano
         - netcat-openbsd
+        - strace
+        - util-linux
         - vim
-        - htop
+
+    - name: Setup ntp.conf file
+      become: yes
+      become_method: sudo
+      copy:
+        src: files/etc/ntp.conf
+        dest: /etc/ntp.conf
+
+    - name: Ensure a job that sync time.
+      become: yes
+      become_method: sudo
+      cron:
+        name: "Sync time"
+        minute: "0"
+        hour: "18"
+        job: "ntpd -n -q"
