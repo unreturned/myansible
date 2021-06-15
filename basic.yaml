@@ -1,0 +1,11 @@
+---
+- hosts: [basic]
+  remote_user: dkovalkov
+  tasks:
+
+    - name: Setup repository file
+      become: yes
+      become_method: sudo
+      copy:
+        src: files/etc/apk/repositories
+        dest: /etc/apk/repositories
