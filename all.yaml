@@ -1,5 +1,5 @@
 ---
-- hosts: [all]
+- hosts: all
   remote_user: dkovalkov
   tasks:
 
@@ -17,6 +17,8 @@
         name={{ item }}
         state=present
       loop:
-        - vim
         - mtr
+        - nano
         - netcat-openbsd
+        - vim
+        - htop
