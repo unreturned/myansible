@@ -13,3 +13,6 @@ ansible -vv --inventory inventory.ini basic --user dkovalkov --ask-pass -m comma
 ansible-playbook --verbose --inventory inventory.ini mydocker.yaml --check
 
 ansible --inventory inventory.ini all -m ping
+
+Обновление
+ansible -vv --inventory inventory.ini basic --user dkovalkov --ask-pass --become --module-name raw --args "apk update; apk upgrade -a"
