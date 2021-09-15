@@ -6,7 +6,7 @@ ansible -vv --inventory inventory.ini basic --user root --ask-pass --module-name
 ansible -vv --inventory inventory.ini basic --user root --ask-pass --module-name raw --args "adduser dkovalkov"
 ansible -vv --inventory inventory.ini basic --user root --ask-pass --module-name raw --args "adduser dkovalkov wheel"
 
-ansible -vv --inventory inventory.ini basic --user dkovalkov --ask-pass -m command --args 'cat /etc/os-release
+ansible -vv --inventory inventory.ini basic --user dkovalkov --ask-pass -m command --args 'cat /etc/os-release'
 
 Для того, чтобы стартовать плейбук, выполни, пожалуйста
 
