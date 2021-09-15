@@ -24,6 +24,7 @@
         - strace
         - util-linux
         - vim
+        - procps
 
     - name: Setup ntp.conf file
       become: yes
