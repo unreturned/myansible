@@ -16,3 +16,4 @@ ansible --inventory inventory.ini all -m ping
 
 Обновление
 ansible -vv --inventory inventory.ini basic --user dkovalkov --ask-pass --become --module-name raw --args "apk update; apk upgrade -a"
+ansible -vv --inventory inventory.ini basic --user dkovalkov --become --module-name raw --args "apk update; apk upgrade -a"
