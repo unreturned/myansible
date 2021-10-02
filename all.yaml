@@ -17,14 +17,15 @@
         name={{ item }}
         state=present
       loop:
+        - awall
         - htop
         - mtr
         - nano
         - netcat-openbsd
+        - procps
         - strace
         - util-linux
         - vim
-        - procps
 
     - name: Setup ntp.conf file
       become: yes
