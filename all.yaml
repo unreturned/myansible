@@ -27,6 +27,13 @@
         - util-linux
         - vim
 
+    - name: Setup resolv.conf file
+      become: yes
+      become_method: sudo
+      copy:
+        src: files/etc/resolv.conf
+        dest: /etc/resolv.conf
+
     - name: Setup ntp.conf file
       become: yes
       become_method: sudo
@@ -42,3 +49,10 @@
         minute: "0"
         hour: "18"
         job: "ntpd -n -q"
+
+    - name: Ensure that ip_tables module loaded
+      become: yes
+      become_method: sudo
+      modprobe:
+        name: ip_tables
+        state: present
