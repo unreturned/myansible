@@ -19,6 +19,7 @@
       loop:
         - awall
         - htop
+        - keepalived
         - mtr
         - nano
         - netcat-openbsd
