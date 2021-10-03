@@ -61,9 +61,14 @@
       become: yes
       become_method: sudo
       ansible.posix.sysctl:
-        name: net.ipv6.conf.all.disable_ipv6
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
         sysctl_file: /etc/sysctl.d/local.conf
-        value: '1'
         sysctl_set: yes
         state: present
         reload: yes
+      with_items:
+        - name: "net.ipv4.ip_nonlocal_bind"
+          value: 1
+        - name: "net.ipv6.conf.all.disable_ipv6"
+          value: 1
