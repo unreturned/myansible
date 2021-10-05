@@ -42,7 +42,7 @@
         src: files/etc/ntp.conf
         dest: /etc/ntp.conf
 
-    - name: Ensure a job that sync time.
+    - name: Add cron task for sync time
       become: yes
       become_method: sudo
       cron:
@@ -58,7 +58,7 @@
         name: ip_tables
         state: present
 
-    - name: Disable IPv6
+    - name: Setting sysctl parameters
       become: yes
       become_method: sudo
       ansible.posix.sysctl:
