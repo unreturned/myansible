@@ -1,0 +1,31 @@
+---
+- hosts: [mail_servers]
+  remote_user: dkovalkov
+  tasks:
+
+    - name: Ensure all needed packages for MailServer are installed
+      become: yes
+      become_method: sudo
+      package:
+        name={{ item }}
+        state=present
+      loop:
+        - exim
+        - dovecot
+        - certbot
+
+# runlevel seems to be not working
+    - name: Ensure all needed services for MailServer are installed
+      become: yes
+      become_method: sudo
+      service:
+        name={{ item }}
+        state=started
+        runlevel=default
+      loop:
+        - exim
+        - dovecot
+
+# temporary workaround
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote
+      ansible.builtin.shell: somescript.sh >> somelog.txt

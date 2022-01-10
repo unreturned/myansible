@@ -1,0 +1,11 @@
+---
+- hosts: [debug_servers]
+  remote_user: dkovalkov
+  tasks:
+
+#     - name: Populate service facts
+      ansible.builtin.service_facts:
+
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts
