@@ -45,11 +45,16 @@
     - name: Add cron task for sync time
       become: yes
       become_method: sudo
-      cron:
-        name: "Sync time"
-        minute: "0"
-        hour: "18"
-        job: "ntpd -n -q"
+      ansible.builtin.copy:
+        src: files/etc/periodic/15min/synctime
+        dest: /etc/periodic/15min/synctime
+        mode: 0755
+
+#      ansible.builtin.cron:
+#        name: "Sync time"
+#        user: root
+#        job: "ntpd -n -q"
+#        cron_file: /etc/periodic/15min/synctime
 
     - name: Ensure that ip_tables module loaded
       become: yes
